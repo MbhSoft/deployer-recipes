@@ -1,0 +1,21 @@
+{
+    "name": "mbhsoft/deployer-recipes",
+    "description": "3rd party deployer recipes",
+    "type": "library",
+    "keywords": [
+        "deployer",
+        "recipes",
+        "deploy",
+        "deployment"
+    ],
+    "homepage": "https://github.com/MbhSoft/deployer-recipes",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Marc Bastian Heinrichs",
+            "email": "mbh@mbh-software.de",
+            "homepage": "https://www.mbh-software.de",
+            "role": "Maintainer"
+        }
+    ]
+}
