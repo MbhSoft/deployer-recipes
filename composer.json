@@ -17,5 +17,9 @@
             "homepage": "https://www.mbh-software.de",
             "role": "Maintainer"
         }
-    ]
+    ],
+    "require": {
+      "ircmaxell/random-lib": "^1.1",
+      "helhum/typo3-console": ">=3.3"
+    }
 }
