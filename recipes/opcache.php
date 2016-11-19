@@ -17,7 +17,7 @@ function getResetScriptFileName() {
     $generator = $factory->getMediumStrengthGenerator();
     $scriptIdentifier = $generator->generateString(32, \RandomLib\Generator::CHAR_ALNUM);
     // store the $scriptIdentifier
-    env('opcache:reset:scriptIdentifier', $scriptIdentifier);
+    env('opcache_reset_scriptIdentifier', $scriptIdentifier);
 
     $scriptFilename = 'surf-opcache-reset-' . $scriptIdentifier . '.php';
     return $scriptFilename;
@@ -32,5 +32,5 @@ task('local:opcache:reset:create_script', function() {
 })->desc('create opcache reset script locally');
 
 task('opcache:reset:execute', function() {
-    run("curl -sS {{public_url}}/surf-opcache-reset-{{opcache:reset:scriptIdentifier}}.php");
+    run("curl -sS {{public_url}}/surf-opcache-reset-{{opcache_reset_scriptIdentifier}}.php");
 })->desc('execute opcache reset script');
