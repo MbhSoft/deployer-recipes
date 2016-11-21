@@ -1,7 +1,7 @@
 <?php
 
 // default path
-env('bin/typo3cms', 'bin/typo3cms');
+env('bin/typo3cms', './bin/typo3cms');
 
 task('typo3cms:cache:flush_forced', function() {
     run("{{bin/typo3cms}} cache:flush --force");
