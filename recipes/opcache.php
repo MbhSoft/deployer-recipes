@@ -29,11 +29,11 @@ task('local:opcache:reset:create_script', function() {
 })->desc('create opcache reset script locally');
 
 task('opcache:reset:execute', function() {
-    run("curl -sS {{public_url}}/deployer-opcache-reset-{{opcache_reset_scriptIdentifier}}.php");
+    run("curl -sS --fail {{public_url}}/deployer-opcache-reset-{{opcache_reset_scriptIdentifier}}.php");
 })->desc('execute opcache reset script');
 
 task('local:opcache:reset:execute', function() {
-    runLocally("curl -sS {{public_url}}/deployer-opcache-reset-{{opcache_reset_scriptIdentifier}}.php");
+    runLocally("curl --fail -sS {{public_url}}/deployer-opcache-reset-{{opcache_reset_scriptIdentifier}}.php");
 })->desc('execute opcache reset script locally');
 
 task('opcache:reset:remove_script', function() {
