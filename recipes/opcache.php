@@ -2,6 +2,7 @@
 
 env('web_dir', '.');
 env('public_url', '');
+env('opcache_reset_scriptIdentifier', '');
 
 set(
     'reset_script_content',
@@ -10,12 +11,14 @@ set(
 
 function getResetScriptFileName()
 {
-    $factory = new \RandomLib\Factory;
-    $generator = $factory->getMediumStrengthGenerator();
-    $scriptIdentifier = $generator->generateString(32, \RandomLib\Generator::CHAR_ALNUM);
-    // store the $scriptIdentifier
-    env('opcache_reset_scriptIdentifier', $scriptIdentifier);
-
+    $scriptIdentifier = env('opcache_reset_scriptIdentifier');
+    if (empty($scriptIdentifier)) {
+        $factory = new \RandomLib\Factory;
+        $generator = $factory->getMediumStrengthGenerator();
+        $scriptIdentifier = $generator->generateString(32, \RandomLib\Generator::CHAR_ALNUM);
+        // store the $scriptIdentifier
+        env('opcache_reset_scriptIdentifier', $scriptIdentifier);
+    }
     $scriptFilename = 'deployer-opcache-reset-' . $scriptIdentifier . '.php';
     return $scriptFilename;
 }
