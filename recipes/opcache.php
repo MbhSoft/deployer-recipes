@@ -21,7 +21,7 @@ function getResetScriptFileName()
 }
 
 task('opcache:reset:create_script', function() {
-    run("echo \"" . get('reset_script_content') . "\" > {{web_dir}}/" . getResetScriptFileName());
+    run("echo \"" . get('reset_script_content') . "\" > {{current}}/{{web_dir}}/" . getResetScriptFileName());
 })->desc('create opcache reset script');
 
 task('local:opcache:reset:create_script', function() {
@@ -37,7 +37,7 @@ task('local:opcache:reset:execute', function() {
 })->desc('execute opcache reset script locally');
 
 task('opcache:reset:remove_script', function() {
-    run("rm {{web_dir}}/deployer-opcache-reset-{{opcache_reset_scriptIdentifier}}.php");
+    run("rm {{current}}/{{web_dir}}/deployer-opcache-reset-{{opcache_reset_scriptIdentifier}}.php");
 })->desc('remove opcache reset script');
 
 task('local:opcache:reset:remove_script', function() {
