@@ -1,8 +1,9 @@
 <?php
+namespace Deployer;
 
-env('web_dir', '.');
-env('public_url', '');
-env('opcache_reset_scriptIdentifier', '');
+set('web_dir', '.');
+set('public_url', '');
+set('opcache_reset_scriptIdentifier', '');
 
 set(
     'reset_script_content',
@@ -11,20 +12,20 @@ set(
 
 function getResetScriptFileName()
 {
-    $scriptIdentifier = env('opcache_reset_scriptIdentifier');
+    $scriptIdentifier = get('opcache_reset_scriptIdentifier');
     if (empty($scriptIdentifier)) {
         $factory = new \RandomLib\Factory;
         $generator = $factory->getMediumStrengthGenerator();
         $scriptIdentifier = $generator->generateString(32, \RandomLib\Generator::CHAR_ALNUM);
         // store the $scriptIdentifier
-        env('opcache_reset_scriptIdentifier', $scriptIdentifier);
+        get('opcache_reset_scriptIdentifier', $scriptIdentifier);
     }
     $scriptFilename = 'deployer-opcache-reset-' . $scriptIdentifier . '.php';
     return $scriptFilename;
 }
 
 task('opcache:reset:create_script', function() {
-    run("echo \"" . get('reset_script_content') . "\" > {{current}}/{{web_dir}}/" . getResetScriptFileName());
+    run("echo \"" . get('reset_script_content') . "\" > {{current_path}}/{{web_dir}}/" . getResetScriptFileName());
 })->desc('create opcache reset script');
 
 task('local:opcache:reset:create_script', function() {
@@ -40,7 +41,7 @@ task('local:opcache:reset:execute', function() {
 })->desc('execute opcache reset script locally');
 
 task('opcache:reset:remove_script', function() {
-    run("rm {{current}}/{{web_dir}}/deployer-opcache-reset-{{opcache_reset_scriptIdentifier}}.php");
+    run("rm {{current_path}}/{{web_dir}}/deployer-opcache-reset-{{opcache_reset_scriptIdentifier}}.php");
 })->desc('remove opcache reset script');
 
 task('local:opcache:reset:remove_script', function() {

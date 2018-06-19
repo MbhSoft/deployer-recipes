@@ -1,25 +1,31 @@
 {
-    "name": "mbhsoft/deployer-recipes",
-    "description": "3rd party deployer recipes",
-    "type": "library",
-    "keywords": [
-        "deployer",
-        "recipes",
-        "deploy",
-        "deployment"
-    ],
-    "homepage": "https://github.com/MbhSoft/deployer-recipes",
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Marc Bastian Heinrichs",
-            "email": "mbh@mbh-software.de",
-            "homepage": "https://www.mbh-software.de",
-            "role": "Maintainer"
-        }
-    ],
-    "require": {
-      "ircmaxell/random-lib": "^1.1",
-      "helhum/typo3-console": ">=3.3"
+  "name": "mbhsoft/deployer-recipes",
+  "description": "3rd party deployer recipes",
+  "type": "library",
+  "keywords": [
+    "deployer",
+    "recipes",
+    "deploy",
+    "deployment"
+  ],
+  "homepage": "https://github.com/MbhSoft/deployer-recipes",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Marc Bastian Heinrichs",
+      "email": "mbh@mbh-software.de",
+      "homepage": "https://www.mbh-software.de",
+      "role": "Maintainer"
     }
+  ],
+  "autoload": {
+    "files": [
+      "autoload.php"
+    ]
+  },
+  "require": {
+    "deployer/deployer": "^6.0",
+    "ircmaxell/random-lib": "^1.1",
+    "helhum/typo3-console": ">=3.3"
+  }
 }
