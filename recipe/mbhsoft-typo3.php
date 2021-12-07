@@ -4,6 +4,10 @@ namespace Deployer;
 // default path
 set('bin/typo3cms', 'bin/typo3cms');
 
+task('typo3cms:cache:flush', function() {
+    run("cd {{current_path}} && {{bin/typo3cms}} cache:flush");
+})->desc('flush caches');
+
 task('typo3cms:cache:flush_forced', function() {
     run("cd {{current_path}} && {{bin/typo3cms}} cache:flush --force");
 })->desc('flush caches forced');
