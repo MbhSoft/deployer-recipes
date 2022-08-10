@@ -24,7 +24,7 @@
     ]
   },
   "require": {
-    "deployer/deployer": "^6.0",
+    "deployer/deployer": "^6.0 || ^7.0",
     "paragonie/random-lib": "^2.0",
     "helhum/typo3-console": ">=3.3"
   }
