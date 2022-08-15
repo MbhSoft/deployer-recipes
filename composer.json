@@ -18,11 +18,6 @@
       "role": "Maintainer"
     }
   ],
-  "autoload": {
-    "files": [
-      "autoload.php"
-    ]
-  },
   "require": {
     "deployer/deployer": "^6.0 || ^7.0",
     "paragonie/random-lib": "^2.0",
